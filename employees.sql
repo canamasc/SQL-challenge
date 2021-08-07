@@ -108,14 +108,6 @@ ON p.dept_no = d.dept_no) k
 ON e.emp_no = k.emp_no
 WHERE k.dept_name = 'Sales' OR k.dept_name = 'Development';
 
--- Question 7 assuming  single employee has to be in both departments
-SELECT o.emp_no, o.dept_no, d.dept_name FROM
-(SELECT * FROM dept_emp 
-WHERE emp_no IN (
-	SELECT emp_no FROM dept_emp
-	GROUP BY emp_no HAVING count(*) > 1)) o
-LEFt JOIN departments d ON d.dept_no = o.dept_no
-ORDER BY emp_no;
 
 
 -- Question 8, list freq. count of employee last names
