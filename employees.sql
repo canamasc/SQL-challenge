@@ -1,5 +1,5 @@
 -- Salary table
-DROP TABLE IF EXISTS salaries; 
+--DROP TABLE IF EXISTS salaries; 
 CREATE TABLE salaries (
 	emp_no INT NOT NULL,
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
@@ -7,7 +7,7 @@ CREATE TABLE salaries (
 ); 
 
 -- employee table
-DROP TABLE IF EXISTS employees; 
+--DROP TABLE IF EXISTS employees; 
 CREATE TABLE employees (
 	emp_no INT NOT NULL PRIMARY KEY,
 	emp_title VARCHAR,
@@ -19,14 +19,14 @@ CREATE TABLE employees (
 ); 
 
 -- Departments table
-DROP TABLE IF EXISTS departments; 
+--DROP TABLE IF EXISTS departments; 
 CREATE TABLE departments (
 	dept_no VARCHAR NOT NULL PRIMARY KEY,
 	dept_name VARCHAR
 ); 
 
 -- Department employees
-DROP TABLE IF EXISTS dept_emp; 
+--DROP TABLE IF EXISTS dept_emp; 
 CREATE TABLE dept_emp (
 	emp_no INT NOT NULL,
 	dept_no VARCHAR,
@@ -34,7 +34,7 @@ CREATE TABLE dept_emp (
 ); 
 
 -- Department managers
-DROP TABLE IF EXISTS dept_manager; 
+--DROP TABLE IF EXISTS dept_manager; 
 CREATE TABLE dept_manager (
 	dept_no VARCHAR NOT NULL,
 	emp_no INT,
@@ -42,7 +42,7 @@ CREATE TABLE dept_manager (
 ); 
 
 -- titles table
-DROP TABLE IF EXISTS titles; 
+--DROP TABLE IF EXISTS titles; 
 CREATE TABLE titles (
 	title_id VARCHAR NOT NULL PRIMARY KEY,
 	title VARCHAR
