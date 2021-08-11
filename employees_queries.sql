@@ -26,7 +26,7 @@ ON e.emp_no = k.emp_no;
 -- emp_no, last name, first name, and dept_name
 -- first merge dept_emp with departments
 -- then add dept. names to employees table
-
+CREATE VIEW v AS
 SELECT e.emp_no, e.last_name, e.first_name, k.dept_name FROM
 employees e LEFT JOIN (SELECT p.emp_no, p.dept_no, d.dept_name
 FROM dept_emp p LEFT JOIN departments d
@@ -42,23 +42,13 @@ WHERE first_name = 'Hercules'
 AND last_name LIKE 'B%';
 
 -- Question 6, list employees in Sales dept, with emp_no, full name, and dept. name
--- Recycle query from Q4 and just filter for department
-SELECT e.emp_no, e.last_name, e.first_name, k.dept_name FROM
-employees e LEFT JOIN (SELECT p.emp_no, p.dept_no, d.dept_name
-FROM dept_emp p LEFT JOIN departments d
-ON p.dept_no = d.dept_no) k 
-ON e.emp_no = k.emp_no
-WHERE k.dept_name = 'Sales';
+-- Recycle view from Q4 and just filter for department 
+SELECT * FROM v
+WHERE dept_name = 'Sales';
 
 -- Question 7, list all employees in Sales and Development, with emp_no, full name, dept name
-SELECT e.emp_no, e.last_name, e.first_name, k.dept_name FROM
-employees e LEFT JOIN (SELECT p.emp_no, p.dept_no, d.dept_name
-FROM dept_emp p LEFT JOIN departments d
-ON p.dept_no = d.dept_no) k 
-ON e.emp_no = k.emp_no
-WHERE k.dept_name = 'Sales' OR k.dept_name = 'Development';
-
-
+SELECT * FROM v
+WHERE dept_name = 'Sales' OR dept_name = 'Development';
 
 -- Question 8, list freq. count of employee last names
 SELECT last_name, count(last_name) as last_name_count 
